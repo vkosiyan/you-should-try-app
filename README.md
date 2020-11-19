@@ -7,6 +7,7 @@ This is your passport boilerplate.
 
 1. Clone the repo
 2. Delete the `.git` file, when you are in the root of the file, you can press `ls` and you should see a `.git` file, then go ahead and run `rm -rf .git`
+3. Rename the folder to your Project
 
 #### Setup your git repo
 1. in the project root `git init`
