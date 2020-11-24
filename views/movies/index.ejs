@@ -1,0 +1,29 @@
+
+<%- include('../partials/header') %>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Release Year</th>
+      <th>MPAA Rating</th>
+      <th>Genre</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% movies.forEach(m => { %>
+       
+    <!-- Write the line of EJS to iterate over movies using forEach -->
+      <tr>
+        <td><%= m.title %></td>
+        <td><%= m.releaseYear %></td>
+        <td><%= m.mpaaRating %></td>
+        <td><%= m.genre %></td>
+        <td><a href="/movies/<%= m._id %>">DETAILS</a></td>
+      </tr>
+    <!-- Close the forEach using EJS here -->
+    <% }) %> 
+  </tbody>
+</table>
+<br>
+<a href='new'>Add a Movie</a>
+<%- include('../partials/footer') %>
