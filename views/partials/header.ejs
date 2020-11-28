@@ -29,19 +29,9 @@
                 <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
               </div>
           <% } else { %>
-            <a href="/performers/new" <%- title === 'Movie Lists' ? 'class="active"' : '' %>>MOVIE LISTS</a>
-            <a href="/movies/new" <%- title === 'Show Lists' ? 'class="active"' : '' %>>SHOW LISTS</a>
+            <a href="/movielists/" <%- title === 'Movie Lists' ? 'class="active"' : '' %>>MOVIE LISTS</a>
+            <a href="/showlists/" <%- title === 'Show Lists' ? 'class="active"' : '' %>>SHOW LISTS</a>
             <a href="/auth/google" <%- title === 'Login' ? 'class="active"' : '' %>><i class="material-icons left">vpn_key</i>LOGIN WITH GOOGLE</a>
-         
-
-            <div class="dropdown">
-              <button class="dropbtn">Dropdown</button>
-              <div class="dropdown-content">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
-              </div>
-            </div>
             <% } %>
 
   </nav>

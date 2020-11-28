@@ -6,6 +6,7 @@ const movieSchema = new Schema({
     title: String,
     releaseYear: Number,
     mpaaRating: String,
+    movielink: String,
     genre: [String],
     whereToWatch: [String]
 });

@@ -1,20 +1,12 @@
 
 <%- include('../partials/header') %>
-<table id="list">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Release<br>Year</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
 
-        <tr>
+<form id="new-form" action="/movielists" method="POST">
+  <label>List Title:</label>
+  <input type="text" name="listTitle">
+  <label>List Description:</label>
+  <input type="text" name="listDesc">
+  <input type="submit" value="Add List">
+</form>
 
-
-        </tr>
-
-      </tbody>
-    </table>
 <%- include('../partials/footer') %>

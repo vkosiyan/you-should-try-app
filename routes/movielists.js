@@ -1,0 +1,11 @@
+const express = require('express');
+const router = express.Router();
+const movielistsCtrl = require('../controllers/movielists');
+	
+// GET /movies/new
+router.get('/new', movielistsCtrl.new);
+router.post('/', movielistsCtrl.create);
+router.get('/', movielistsCtrl.index);
+router.get('/:id', movielistsCtrl.show)
+	
+module.exports = router;

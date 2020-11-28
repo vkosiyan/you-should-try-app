@@ -4,10 +4,9 @@ const Schema = mongoose.Schema;
 
 const movieListSchema = new Schema({
     title: String,
-    releaseYear: Number,
-    mpaaRating: String,
-    genre: [String],
-    whereToWatch: [String]
+    listDesc: String,
+    user: String,
+    movies: [String]
 });
 
-module.exports = mongoose.model('Movie', movieSchema);
+module.exports = mongoose.model('MovieList', movieListSchema);

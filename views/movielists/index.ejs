@@ -1,0 +1,28 @@
+
+<%- include('../partials/header') %>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Decription</th>
+      <th>User</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% movielists.forEach(m => { %>
+       
+    <!-- Write the line of EJS to iterate over movies using forEach -->
+      <tr>
+        <td><%= m.title %></td>
+        <td><%= m.listDesc %></td>
+        <td><a href="/movielists/<%= m._id %>">DETAILS</a></td>
+      </tr>
+    <!-- Close the forEach using EJS here -->
+    <% }) %> 
+  </tbody>
+</table>
+<br>
+<a href='/movielists/new'>Create a List</a>
+
+<%- include('../partials/footer') %>
+
