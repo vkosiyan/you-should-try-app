@@ -1,7 +1,7 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 //Require your Viewer Model here!
-const Viewer = require('../models/viewer');
+const User = require('../models/user');
 // configuring Passport!
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
@@ -9,33 +9,33 @@ passport.use(new GoogleStrategy({
   callbackURL: process.env.GOOGLE_CALLBACK
 },
 function(accessToken, refreshToken, profile, cb) {
-  Viewer.findOne({ 'googleId': profile.id }, function(err, viewer) {
+  User.findOne({ 'googleId': profile.id }, function(err, user) {
     if (err) return cb(err);
-    if (viewer) {
-      return cb(null, viewer);
+    if (user) {
+      return cb(null, user);
     } else {
       // we have a new viewer via OAuth!
-      var newViewer = new Viewer({
+      var newUser = new User({
         name: profile.displayName,
         email: profile.emails[0].value,
         googleId: profile.id
       });
-      newViewer.save(function(err) {
+      newUser.save(function(err) {
         if (err) return cb(err);
-        return cb(null, newViewer);
+        return cb(null, newUser);
       });
     }
   });
 }
 ));
 
-passport.serializeUser(function(viewer, done) {
-  done(null, viewer.id);
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
 });
 
 passport.deserializeUser(function(id, done) {
-  Viewer.findById(id, function(err, viewer) {
-    done(err, viewer);
+  User.findById(id, function(err, user) {
+    done(err, user);
   });
 });
 

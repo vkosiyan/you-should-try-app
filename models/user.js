@@ -6,7 +6,7 @@ const factSchema = new mongoose.Schema({
     timestamps: true
   });
 
-const viewerSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     name: String,
     email: String,
     facts: [factSchema],
@@ -19,4 +19,4 @@ const viewerSchema = new mongoose.Schema({
     timestamps: true
   });
 
-  module.exports = mongoose.model('Viewer', viewerSchema);
+  module.exports = mongoose.model('User', userSchema);

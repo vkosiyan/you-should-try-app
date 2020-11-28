@@ -7,13 +7,11 @@ const rootURL = 'https://api.themoviedb.org';
 
 // The root route renders our only view
 router.get('/', function(req, res, next) {
-  const username = req.query.username;
-
-  request(`${rootURL}/3/movie/550?api_key=${key}`, 
+  const genreName = req.query.name;
+  request(`${rootURL}/3/genre/movie/list?api_key=${key}&language=en-US`, 
   function(err, response, body){
-    console.log(body);
-    console.log(process.env.key)
-    res.render('index', {title: 'Popular Movies'})
+    console.log(body)
+    res.render('index', {title: 'Popular Movies', movieData: body})
   })
 
 

@@ -19,7 +19,7 @@ require('./config/database');
 require('./config/passport');
 
 var indexRoutes = require('./routes/index');
-var viewersRoutes = require('./routes/viewers');
+var userRoutes = require('./routes/user');
 var moviesRoutes = require('./routes/movies');
 
 // view engine setup
@@ -49,7 +49,7 @@ app.use(function (req, res, next) {
 
 // mount all routes with appropriate base paths
 app.use('/', indexRoutes);
-app.use('/viewers', viewersRoutes);
+app.use('/user', userRoutes);
 app.use('/movies', moviesRoutes);
 
 // invalid request, send 404 page
