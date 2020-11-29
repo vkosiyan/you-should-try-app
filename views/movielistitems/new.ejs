@@ -1,0 +1,23 @@
+
+<%- include('../partials/header') %>
+  <form id="add-movie-item-form" method="POST"
+  action="/movielists/<%= movielist._id %>">
+  <label>List Number:</label>
+  <select name="listnumber">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="5">6</option>
+    <option value="5">7</option>
+    <option value="5">8</option>
+    <option value="5">9</option>
+    <option value="5">10</option>
+  </select>
+  <label>Why it's on your list:</label>
+  <input name="description">
+  <button type="submit">Add to List </button>
+</form>
+
+<%- include('../partials/footer') %>
