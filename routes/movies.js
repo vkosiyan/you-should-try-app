@@ -3,9 +3,9 @@ const router = express.Router();
 const moviesCtrl = require('../controllers/movies');
 	
 // GET /movies/new
+router.get('/', moviesCtrl.index);
 router.get('/new', moviesCtrl.new);
+router.get('/:id', moviesCtrl.show);
 router.post('/', moviesCtrl.create);
-router.get('/movielists/:id/movies', moviesCtrl.addToMovieList)
-router.get('/', moviesCtrl.index)
 	
 module.exports = router;

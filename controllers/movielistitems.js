@@ -1,6 +1,6 @@
 const MovieList = require('../models/movielist');
 const MovieListItem = require('../models/movielistitem')
-
+const Movie = require('../models/movie');
 module.exports = {
   create,
   addToList,

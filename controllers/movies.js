@@ -1,43 +1,50 @@
 const Movie = require('../models/movie');
-const MovieList = require('../models/movielist');
+const MovieListItem = require('../models/movielistitem');
 
 module.exports = {
-  index,
   new: newMovie,
   create,
-  addToMovieList
+  addToListItem,
+  show,
+  index
 };
-function index(req,res){
-  Movie.find({}, function(err, movies) {
-      res.render('movies/index', { title: 'Movies', movies });
-  });
-}
 
-function addToMovieList(req, res) {
-  MovieList.findById(req.params.id, function (err, movielist) {
-    movielist.movie.push(req.body.movieId);
-    movielist.save(function (err) {
-      res.redirect(`/movielists/${movielist._id}`);
+function addToListItem(req, res) {
+  MovieListItem.findById(req.params.id, function (err, movielistitem) {
+    movielistitem.movie.push(req.body.movielistitemId);
+    movielistitem.save(function (err) {
+      res.redirect(`/movielists/${movielist._id}/movielistsitems/${movielistitem._id}`);
     });
   });
 }
 
 function create(req, res) {
-  // Need to "fix" date formatting to prevent day off by 1
-  // This is due to the <input type="date"> returning the date
-  // string in this format:  "YYYY-MM-DD"
-  // https://stackoverflow.com/questions/7556591/is-the-javascript-date-object-always-one-day-off
   Movie.create(req.body, function (err, movie) {
-    res.redirect('/movies/new');
+    res.redirect(`/movielistitems/${req.params.id}`);
   });
 }
 
 function newMovie(req, res) {
-  Movie.find({}, function (err, movies) {
-    res.render('movies/new', {
-      title: 'Add Movie',
-      movies
-    });
-  })
+  Movie.find({}, function (err, movie) {
+    MovieListItem.findById(req.params.id, function(err, movielistitem){
+      res.render('movies/new', {
+        title: 'Add Movie',
+        movie, movielistitem
+      });
+    })
+  
+});
 }
 
+function show(req, res) {
+  Movie.findById(req.params.id, function(err, movie) {
+    console.log(movie)
+    res.render('movies/show', { title: 'Movie Detail', movie });
+  });
+}
+
+function index(req, res) {
+  Movie.find({}, function(err, movies) {
+    res.render('movies/index', { title: 'All Movies', movies });
+  });
+}
