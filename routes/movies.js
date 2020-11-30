@@ -7,5 +7,9 @@ router.get('/', moviesCtrl.index);
 router.get('/new', moviesCtrl.new);
 router.get('/:id', moviesCtrl.show);
 router.post('/', moviesCtrl.create);
-	
+router.delete('/:id', moviesCtrl.delete);
+router.get('/:id/edit', moviesCtrl.edit);
+router.put('/:id', moviesCtrl.update);
+router.post('/movielistitems/:id/movies', moviesCtrl.addToListItem);
+
 module.exports = router;

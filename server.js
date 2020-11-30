@@ -54,7 +54,7 @@ app.use('/', indexRoutes);
 app.use('/user', userRoutes);
 app.use('/movies', moviesRoutes);
 app.use('/movielists', movielistsRoutes);
-app.use('/',movieListItemsRoutes);
+app.use('/movielistitems',movieListItemsRoutes);
 
 // invalid request, send 404 page
 app.use(function(req, res) {

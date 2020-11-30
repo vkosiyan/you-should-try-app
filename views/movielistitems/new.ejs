@@ -1,7 +1,21 @@
 
 <%- include('../partials/header') %>
+<div>Movie:</div>
+<ul>
+  <%- movielistitem.movies.map(m => 
+    `<li>${m.title} <small>${m.releaseYear}</small></li>`
+  ).join('') %>
+</ul>
+
   <form id="add-movie-item-form" method="POST"
-  action="/movielists/<%= movielist._id %>">
+  action="/movielistitems/<%= movielistitem._id %>/movies">
+    <select name="movieId">
+      <%- movies.map(m => 
+        `<option value="${m._id}">${m.title}</option>`
+      ).join('') %>
+    </select>
+    <button type="submit">Add to Cast</button>
+  </form>
   <label>List Number:</label>
   <select name="listnumber">
     <option value="1">1</option>
@@ -17,7 +31,11 @@
   </select>
   <label>Why it's on your list:</label>
   <input name="description">
+  
   <button type="submit">Add to List </button>
+</form>
+<form action="<%= movielistitem._id%>/movies/new">
+  <input type="submit" value="Add A Movie" />
 </form>
 
 <%- include('../partials/footer') %>

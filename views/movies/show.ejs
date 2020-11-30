@@ -8,11 +8,20 @@
     <div>Rating: </div>
     <div><%= movie.mpaaRating %></div>
     <div>Description Link: </div>
-    <div><%= movie.movieLink %></div>
+    <div><%= movie.movielink %></div>
     <div>Genre:</div>
     <div><%= movie.genre%></div>
     <div>Where You Can Watch:</div>
     <div><%= movie.whereToWatch%></div>
   </section>
+<br> <br>
+  <a href="/movies/<%= movie._id %>/edit">EDIT MOVIE DETAILS</a>
+<br><br>
+    <form action="/movies/<%= movie.id %>?_method=DELETE"
+        id="delete-form" method="POST">
+        <button type="submit">DELETE MOVIE</button>
+    </form>
+
+
 <%- include('../partials/footer') %>
 

@@ -1,0 +1,24 @@
+<%- include('../partials/header') %>
+
+<form id="new-form" action="/movies/<%= movie.id %>?_method=PUT" method="POST" autocomplete="off">
+  <label>Title:</label>
+  <input type="text" name="title" value="<%= movie.title %>">
+  <label>Release Year:</label>
+  <input type="text" name="releaseYear" value="<%= movie.releaseYear %>">
+  <label>MPAA Rating</label>
+  <select name="mpaaRating">
+    <option value="G">G</option>
+    <option value="PG">PG</option>
+    <option value="PG-13">PG-13</option>
+    <option value="R">R</option>
+  </select>
+  <label>Movie Link:</label>
+  <input type="text" name="title" value="<%= movie.movieLink %>">
+  <label>Genre/Genres:</label>
+  <input type="text" name="title" value="<%= movie.genre %>">
+  <label>Where to Watch:</label>
+    <input type="text" name="title" value="<%= movie.whereToWatch %>">
+  <input type="submit" value="Edit Movie">
+</form>
+
+<%- include('../partials/footer') %>

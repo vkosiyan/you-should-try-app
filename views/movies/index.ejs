@@ -18,4 +18,11 @@
     </tbody>
   </table>
   
+  <% if (user) { %>
+    
+      <a href="/movies/new" <%- title === 'Add Movie' ? 'class="active"' : '' %>>ADD MOVIE</a>  
+   
+  <% } else { %>
+   
+    <% } %>
 <%- include('../partials/footer') %>

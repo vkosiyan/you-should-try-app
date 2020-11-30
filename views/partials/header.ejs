@@ -18,9 +18,15 @@
     <img src="/images/banner.png">
     
           <% if (user) { %>
+            <div class="dropdown">
+              <button class="dropbtn">MOVIES</button>
+            <div class="dropdown-content">
+              <a href="/movielists" <%- title === 'Recommendation Lists' ? 'class="active"' : '' %>>RECOMMENDATION LISTS</a>
+              <a href="/movies" <%- title === 'All Movies' ? 'class="active"' : '' %>>ALL MOVIES</a>
+              <a href="/movies/new" <%- title === 'Add Movie' ? 'class="active"' : '' %>>ADD MOVIE</a>  
+            </div>
             <a href="#">My Recommendations</a>
-            <a href="#">My Lists</a>
-           
+            <a href="#">My Lists</a>           
             <div class="dropdown">
               <button class="dropbtn"><a href="#"></a>MY PROFILE</a></button>
               <div class="dropdown-content">
@@ -29,6 +35,13 @@
                 <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
               </div>
           <% } else { %>
+            <div class="dropdown">
+              <button class="dropbtn">MOVIES</button>
+              <div class="dropdown-content">
+                <a href="/movielists" <%- title === 'Recommendation Lists' ? 'class="active"' : '' %>>>RECOMMENDATION LISTS</a>
+                <a href="/movies" <%- title === 'All Movies' ? 'class="active"' : '' %>>ALL MOVIES</a>
+
+              </div>
             <a href="/movielists/" <%- title === 'Movie Lists' ? 'class="active"' : '' %>>MOVIE LISTS</a>
             <a href="/showlists/" <%- title === 'Show Lists' ? 'class="active"' : '' %>>SHOW LISTS</a>
             <a href="/auth/google" <%- title === 'Login' ? 'class="active"' : '' %>><i class="material-icons left">vpn_key</i>LOGIN WITH GOOGLE</a>

@@ -4,7 +4,8 @@ const Movie = require('../models/movie');
 module.exports = {
   create,
   addToList,
-  new: newListItem
+  new: newListItem,
+  show
 };
 
 function addToList(req,res){
@@ -23,13 +24,19 @@ function create(req, res) {
   }
 
 function newListItem(req, res) {
-    MovieListItem.find({}, function (err, movielistitem) {
-      MovieList.findById(req.params.id, function(err, movielist){
-        res.render('movielistitems/new', {
-          title: 'Add List Item',
-          movielistitem, movielist
-        });
-      })
-    
+  res.render('movielistitems/new', { title: 'Add List Item' });
+}
+
+function show(req, res) {
+  MovieListItem.findById(req.params.id).populate('movies').exec(function(err, movielistitem) {
+    Movie.find(
+      {_id: {$nin: movielistitem.movie}},
+      function(err, movies) {
+        console.log(movies);
+        res.render('movielistitems/show', {
+          title: 'Movie List Item Detail', movielistitem, movies
+        })
+      }
+    )
   });
 }
