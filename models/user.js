@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
     name: String,
     username: String,
     email: String,
-    movielists: [],
+    movierecss: [],
     avatar: String,
     googleId: String,
   }, {

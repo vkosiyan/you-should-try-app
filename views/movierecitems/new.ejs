@@ -1,0 +1,34 @@
+
+<%- include('../partials/header') %>
+<div>Movie:</div>
+
+<form id="add-movie-item-form" method="POST"
+action="/movierecs/<%= movierec._id %>">
+  <select name="movieId">
+    <%- movies.map(m => `<option value="${m._id}">${m.title}</option>`) %>
+  </select>
+  <label>List Number:</label>
+  <select name="listnumber">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="5">6</option>
+    <option value="5">7</option>
+    <option value="5">8</option>
+    <option value="5">9</option>
+    <option value="5">10</option>
+  </select>
+  <label>Why it's on your list:</label>
+  <input type="text" name="description">
+  
+  <button type="submit">Add to List </button>
+</form>
+
+<br> <br>
+<form action="<%= movierecitem._id%>/movies/new">
+  <input type="submit" value="Add A Movie" />
+</form>
+
+<%- include('../partials/footer') %>

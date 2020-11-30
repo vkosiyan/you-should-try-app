@@ -21,8 +21,8 @@ require('./config/passport');
 var indexRoutes = require('./routes/index');
 var userRoutes = require('./routes/user');
 var moviesRoutes = require('./routes/movies');
-var movielistsRoutes = require('./routes/movielists')
-var movieListItemsRoutes = require('./routes/movielistitems.js')
+var movierecsRoutes = require('./routes/movierecs')
+var movieRecItemsRoutes = require('./routes/movierecitems.js')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,7 +32,7 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // mount the session middleware
 app.use(session({
@@ -53,8 +53,9 @@ app.use(function (req, res, next) {
 app.use('/', indexRoutes);
 app.use('/user', userRoutes);
 app.use('/movies', moviesRoutes);
-app.use('/movielists', movielistsRoutes);
-app.use('/', movieListItemsRoutes);
+app.use('/movierecs', movierecsRoutes);
+app.use('/', movieRecItemsRoutes);
+
 
 // invalid request, send 404 page
 app.use(function(req, res) {

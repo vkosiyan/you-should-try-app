@@ -1,5 +1,5 @@
 const Movie = require('../models/movie');
-const MovieListItem = require('../models/movielistitem');
+const MovieRecItem = require('../models/movierecitem');
 
 module.exports = {
   new: newMovie,
@@ -13,10 +13,10 @@ module.exports = {
 };
 
 function addToListItem(req, res) {
-  MovieListItem.findById(req.params.id, function (err, movielistitem) {
-    movielistitem.movies.push(req.body.movieId);
-    movielistitem.save(function (err) {
-      res.redirect(`/movielistitems/${movielistitem._id}`);
+  MovieRecItem.findById(req.params.id, function (err, movierecitem) {
+    movierecitem.movies.push(req.body.movieId);
+    movierecitem.save(function (err) {
+      res.redirect(`/movierecitems/${movierecitem._id}`);
     });
   });
 }

@@ -1,0 +1,12 @@
+
+<%- include('../partials/header') %>
+
+<form id="new-form" action="/movierecs" method="POST">
+  <label>List Title:</label>
+  <input type="text" name="title">
+  <label>List Description:</label>
+  <input type="text" name="listDesc">
+  <input type="submit" value="Add List">
+</form>
+
+<%- include('../partials/footer') %>
