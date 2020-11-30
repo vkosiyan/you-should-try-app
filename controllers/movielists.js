@@ -36,7 +36,8 @@ function create(req, res){
   const movieList = new MovieList(req.body);
   movieList.save(function(err){
     if(err) return res.render('movielists/new');
-    res.redirect('/movielists');
+    console.log(movieList)
+    res.redirect(`/movielists/${req.params.id}`);
   })
 }
 

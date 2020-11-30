@@ -8,15 +8,15 @@ const factSchema = new mongoose.Schema({
 
 const userSchema = new mongoose.Schema({
     name: String,
+    username: String,
     email: String,
-    facts: [factSchema],
-    dob: Date,
+    movielists: [],
     avatar: String,
     googleId: String,
-    favoriteMovie: String,
-    favoriteShow: String
   }, {
     timestamps: true
   });
 
   module.exports = mongoose.model('User', userSchema);
+
+  

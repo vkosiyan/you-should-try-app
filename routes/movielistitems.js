@@ -4,8 +4,8 @@ const movieListItemsCtrl = require('../controllers/movielistitems')
 
 router.post('/movielists/:id/movielistitems', movieListItemsCtrl.addToList);
 router.post('/movielistitems', movieListItemsCtrl.create);
-router.get('/movielistitems/new', movieListItemsCtrl.new);
-router.get('/:id', movieListItemsCtrl.show);
+router.get('/movielists/:id/movielistitems/new', movieListItemsCtrl.new);
+router.get('/movielistitems/:id', movieListItemsCtrl.show);
 
 module.exports = router;
 

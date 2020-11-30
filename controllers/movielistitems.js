@@ -23,9 +23,27 @@ function create(req, res) {
     });
   }
 
+// function newListItem(req, res) {
+//   res.render('movielistitems/new', { title: 'Add List Item', movielistitem, movies});
+// }
+
 function newListItem(req, res) {
-  res.render('movielistitems/new', { title: 'Add List Item' });
+  MovieListItem.find({}, function (err, movielistitem) {
+    MovieList.findById(req.params.id, function(err, movielist){
+      Movie.find(
+        {_id: {$nin: movielistitem.movies}},
+        function(err, movies) {
+          console.log(movies);
+          res.render('movielistitems/new', {
+            title: 'Add Movie List Item',
+            movielistitem, movielist, movies
+          });
+        }
+      )      
+    })
+  });
 }
+
 
 function show(req, res) {
   MovieListItem.findById(req.params.id).populate('movies').exec(function(err, movielistitem) {

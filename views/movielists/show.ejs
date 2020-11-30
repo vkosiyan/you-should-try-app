@@ -9,8 +9,12 @@
   <div>Movies:</div>
   <ul>
     <%- movielist.movielistitem.map(m => 
-      `<li>${m.listnumber}</li>
-      <li>${m.description}</li>`
+      `<h2>${m.listnumber}. ${m.movies.title}</h2>
+      <li>${m.movies.releaseYear}</li>
+      <h3>Comments</h3>
+      <li>${m.description}</li>
+      <a href="/movielistitems/${m._id}">DETAILS</a>
+      `
     ).join('') %>
   </ul>  
   <form action="/movielists/<%= movielist._id%>/movielistitems/new">
