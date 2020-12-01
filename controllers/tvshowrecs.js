@@ -36,6 +36,6 @@ function show(req, res) {
 
 function index(req,res){
   TvshowRec.find({}, function(err, tvshowrecs) {
-      res.render('tvshowrecs/index', { title: 'Tvtvshow Lists', tvshowrecs });
+      res.render('tvshowrecs/index', { title: 'TV Recommendation Lists', tvshowrecs });
   });
 }

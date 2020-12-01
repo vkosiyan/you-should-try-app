@@ -23,8 +23,9 @@
 <table>
   <tr>
   <td>
-  <a href="/tvshows/<%= tvshow._id %>/edit">
+ 
   </td><td>
+    <a href="/tvshows/<%= tvshow._id %>/edit">
     <button type="submit" class="form">EDIT MOVIE DETAILS</button></a>
   </td><td>
     <form action="/tvshows/<%= tvshow.id %>?_method=DELETE" method="POST">
@@ -64,36 +65,42 @@
 
 <% } %>
 <% if (tvshow.comments.length) { %>
-  <table>
+  <br>
+  <table class="comments">
     <thead>
       <tr>
-        <th>User:</th>
-        <th>Would you recommend?</th>
-        <th>User Comments:</th>
+        <th colspan="4">Comments:</th>
       </tr>
     </thead>
     <tbody>
       <% tvshow.comments.forEach(function(comment) { %>
         <tr>
-        <div class="comment">
-          <td><%= comment.userName %></td>
-          <td><%= comment.wouldRecommend %></td>
-          <td><%= comment.content %></td>
-          <td><%= comment.createdAt.toLocaleDateString() %></td>
-          <td><% if (comment.userId.equals(user._id)) { %>
-            <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
-              <button type="submit" class="form">X</button>
-            </form>
-          <% } %></td> 
-          <td><form action="/comments/<%= comment._id %>?_method=PUT" method="POST">
+          <td style="width: 100px;"><%= comment.userName %><br>
+            <%= comment.createdAt.toLocaleDateString() %></td>
+
+          <td style="width: 400px;"><b>Would You Recommend? </b><%= comment.wouldRecommend %>
+            <br><br>
+            <b>Comment:</b> <%= comment.content %> </td>
+            <td style="width: 16px;"><% if (comment.userId.equals(user._id)) { %>
+              <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                <button type="submit" class="form">X</button>
+              </form><% } %></td>
+           </tr>
+          <tr>
+          <td style="width: 31px;">
+          </td>
+          <td style="width: 34px;">
+            <form action="/comments/<%= comment._id %>?_method=PUT" method="POST">
             <!-- Value attribute is being set to the comment's current text -->
             <input name="text" value="<%= comment.wouldRecommend %>">
             <input name="text" value="<%= comment.content %>">
             <button type="submit" class="form">UPDATE COMMENT</button>
-          </form></td>      
-        </div>
-      <% }) %>
-        </tr>
+          </form>
+          </form>
+          <% }) %>
+          </td>      
+          </tr>          
+        </div>    
     </tbody>
   </table>
 <% } else { %>
