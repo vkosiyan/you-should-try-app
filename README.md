@@ -43,11 +43,12 @@ You can create a recommendation list for any category. You add a title and a des
 
 # Getting Started
 
-[Click to play launch the app](http://localhost:3000/)
-* See the live application here
-* Note - If you'd like to create either a show or a list, you must sign up/be signed in
-[Trello Board - Project Planning](https://trello.com/b/flfEQG2v/sei-project-2)
-* This Trello Board was used to do all project planning and includes:
+* [Click to play launch the app](http://localhost:3000/)
+    * See the live application here
+    * Note - If you'd like to create either a show or a list, you must sign up/be signed in
+
+* [Trello Board - Project Planning](https://trello.com/b/flfEQG2v/sei-project-2)
+    * This Trello Board was used to do all project planning and includes:
     * ERD
     * Project To Do List
     * Original wireframes for the project
