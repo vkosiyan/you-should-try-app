@@ -20,9 +20,10 @@ require('./config/passport');
 
 var indexRoutes = require('./routes/index');
 var userRoutes = require('./routes/user');
-var moviesRoutes = require('./routes/movies');
-var movierecsRoutes = require('./routes/movierecs')
-var movieRecItemsRoutes = require('./routes/movierecitems.js')
+var tvshowsRoutes = require('./routes/tvshows');
+var tvshowrecsRoutes = require('./routes/tvshowrecs');
+var tvShowRecItemsRoutes = require('./routes/tvshowrecitems.js');
+var commentsRoutes = require('./routes/comments');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -52,10 +53,10 @@ app.use(function (req, res, next) {
 // mount all routes with appropriate base paths
 app.use('/', indexRoutes);
 app.use('/user', userRoutes);
-app.use('/movies', moviesRoutes);
-app.use('/movierecs', movierecsRoutes);
-app.use('/', movieRecItemsRoutes);
-
+app.use('/tvshows', tvshowsRoutes);
+app.use('/tvshowrecs', tvshowrecsRoutes);
+app.use('/', tvShowRecItemsRoutes);
+app.use('/', commentsRoutes);
 
 // invalid request, send 404 page
 app.use(function(req, res) {

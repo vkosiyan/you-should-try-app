@@ -1,0 +1,71 @@
+
+<%- include('../partials/header') %>
+<section id="show-page">
+    <div>Title: </div>
+    <div><%= tvshow.title %></div>
+    <div>Release Year: </div>
+    <div><%= tvshow.releaseYear %></div>
+    <div>Rating: </div>
+    <div><%= tvshow.mpaaRating %></div>
+    <div>Description Link: </div>
+    <div><%= tvshow.tvshowlink %></div>
+    <div>Genre:</div>
+    <div><%= tvshow.genre%></div>
+    <div>Where You Can Watch:</div>
+    <div><%= tvshow.whereToWatch%></div>
+  </section>
+<br> <br>
+  <a href="/tvshows/<%= tvshow._id %>/edit">EDIT MOVIE DETAILS</a>
+<br><br>
+    <form action="/tvshows/<%= tvshow.id %>?_method=DELETE"
+        id="delete-form" method="POST">
+        <button type="submit">DELETE MOVIE</button>
+    </form>
+<Br><Br>
+
+    <!-- Using the RESTful route to send the book's id to the server -->
+<form action="/tvshows/<%= tvshow._id %>/comments" method="POST">
+  <!-- Be sure name attributes of inputs match the model properties -->
+  <label>Would you recommend this show?</label>
+  <input type="text" name="wouldRecommend"><br><Br>
+  <label>Comment:</label>
+  <input type="text" name="content">
+  <button type="submit">ADD COMMENT</button>
+</form>
+
+<% if (tvshow.comments.length) { %>
+  <table>
+    <thead>
+      <tr>
+        <th>User:</th>
+        <th>Would you recommend?</th>
+        <th>User Comments:</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% tvshow.comments.forEach(function(comment) { %>
+        <tr>
+        <div class="comment">
+          <td><%= comment.userName %></td>
+          <td><%= comment.wouldRecommend %></td>
+          <td><%= comment.content %></td>
+          <td><%= comment.createdAt.toLocaleDateString() %></td>
+          <td><% if (comment.userId.equals(user._id)) { %>
+            <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
+              <button type="submit">X</button>
+            </form>
+          <% } %></td>       
+        </div>
+      <% }) %>
+        </tr>
+    </tbody>
+  </table>
+<% } else { %>
+  <h5>No Comments Yet</h5>
+<% } %>
+
+
+
+<%- include('../partials/footer') %>
+

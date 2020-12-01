@@ -1,0 +1,12 @@
+<%- include('../partials/header') %>
+<div>Show:</div>
+
+<form id="add-show-item-form" method="POST"
+action="/showrecs/<%= showrec._id %>">
+  <select name="showId">
+    <%- shows.map(m => `<option value="${m._id}">${m.title}</option>`).join('') %>
+  </select>
+
+</form>
+
+<%- include('../partials/footer') %>

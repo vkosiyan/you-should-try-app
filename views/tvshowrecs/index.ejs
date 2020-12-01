@@ -9,20 +9,20 @@
     </tr>
   </thead>
   <tbody>
-      <% movierecs.forEach(m => { %>
+      <% tvshowrecs.forEach(s => { %>
        
-    <!-- Write the line of EJS to iterate over movies using forEach -->
+    <!-- Write the line of EJS to iterate over shows using forEach -->
       <tr>
-        <td><%= m.title %></td>
-        <td><%= m.listDesc %></td>
-        <td><a href="/movielists/<%= m._id %>">DETAILS</a></td>
+        <td><%= s.title %></td>
+        <td><%= s.listDesc %></td>
+        <td><a href="/tvshowlists/<%= s._id %>">DETAILS</a></td>
       </tr>
     <!-- Close the forEach using EJS here -->
     <% }) %> 
   </tbody>
 </table>
 <br>
-<a href='/movierecs/new'>Create a List</a>
+<a href='/tvshowrecs/new'>Create a List</a>
 
 <%- include('../partials/footer') %>
 

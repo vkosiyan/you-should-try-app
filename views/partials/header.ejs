@@ -19,16 +19,16 @@
     
           <% if (user) { %>
             <div class="dropdown">
-              <button class="dropbtn">MOVIES</button>
+              <button class="dropbtn">TV SHOWS</button>
             <div class="dropdown-content">
-              <a href="/movierecs" <%- title === 'Recommendation Lists' ? 'class="active"' : '' %>>RECOMMENDATION LISTS</a>
-              <a href="/movies" <%- title === 'All Movies' ? 'class="active"' : '' %>>ALL MOVIES</a>
-              <a href="/movies/new" <%- title === 'Add Movie' ? 'class="active"' : '' %>>ADD MOVIE</a>  
+              <a href="/tvshowrecs" <%- title === 'Recommendation Lists' ? 'class="active"' : '' %>>RECOMMENDATION LISTS</a>
+              <a href="/tvshows" <%- title === 'All Movies' ? 'class="active"' : '' %>>ALL TV SHOWS</a>
+              <a href="/tvshows/new" <%- title === 'Add Movie' ? 'class="active"' : '' %>>ADD TV SHOW</a>  
             </div>
             
-            <a href="/movierecs" <%- title === 'Recommendation Lists' ? 'class="active"' : '' %>>MY LISTS</a>
+            <a href="/tvshowrecs" <%- title === 'Recommendation Lists' ? 'class="active"' : '' %>>MY LISTS</a>
 
-            <a href="/movierecs" <%- title === 'Recommendation Lists' ? 'class="active"' : '' %>>CREATE NEW LIST</a>           
+            <a href="/tvshowrecs" <%- title === 'Recommendation Lists' ? 'class="active"' : '' %>>CREATE NEW LIST</a>           
             <div class="dropdown">
               <button class="dropbtn"><%= user.name %></a></button>
               <div class="dropdown-content">
@@ -37,9 +37,8 @@
                 <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
               </div>
           <% } else { %>
-            <a href="/movies" <%- title === 'All Movies' ? 'class="active"' : '' %>>ALL MOVIES</a>
-            <a href="/movierecs/" <%- title === 'Movie Lists' ? 'class="active"' : '' %>>MOVIE LISTS</a>
-            <a href="/showlists/" <%- title === 'Show Lists' ? 'class="active"' : '' %>>SHOW LISTS</a>
+            <a href="/tvshows" <%- title === 'All Movies' ? 'class="active"' : '' %>>ALL TV SHOWS</a>
+            <a href="/tvshowrecs/" <%- title === 'Movie Lists' ? 'class="active"' : '' %>>RECOMMENDATION LISTS</a>
             <a href="/auth/google" <%- title === 'Login' ? 'class="active"' : '' %>><i class="material-icons left">vpn_key</i>LOGIN WITH GOOGLE</a>
             <% } %>
 

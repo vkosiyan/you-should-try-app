@@ -1,0 +1,24 @@
+
+<%- include('../partials/header') %>
+
+<section id="tvshow-page">
+  <div><h2>Title: <%= tvshowrec.title %></h2> </div>
+  <div><h3>Description: <%= tvshowrec.listDesc %></h3></div>
+  <div></div>
+  <div>Movies:</div>
+  <ul>
+    <%- tvshowrec.tvshowrecitem.map(m => 
+      `<h2>${m.listnumber}. ${m.title}</h2>
+      <h3>Comments</h3>
+      <li>${m.description}</li>
+      <a href="/tvshowrecitems/${m._id}">DETAILS</a>
+      `
+    ).join('') %>
+  </ul>  
+  <form action="/tvshowrecs/<%= tvshowrec._id%>/tvshowrecitems/new">
+    <input type="submit" value="Add a tvshow list item" />
+</form>
+
+
+
+<%- include('../partials/footer') %>
