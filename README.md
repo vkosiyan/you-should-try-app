@@ -1,4 +1,4 @@
-![You Should Try Banner](public/image/readme/readmebanner.png)
+![You Should Try Banner](public/images/readme/readmebanner.png)
 # You Should Try App (Media Recommender)
 ---
 ## Table of Contents
@@ -12,18 +12,18 @@
 # About The Project
 You Should Try is a tv show recommendation app. You can recommend a tv show in two ways. You can create a tv show and then add a comment to share your comments and thoughts on it, or you can create a category list and recommend your top shows for that category (eg: Top Favorite Netflix Shows, Best Comedy Shows to Rewatch). Anyone can view the list of movies or recommendation lists, but you must be signed in to create any posts.
 
-![Homepage](public/image/readme/homepage.png)
-![All TV Shows Page](public/image/readme/allshows.png)
+![Homepage](public/images/readme/homepage.png)
+![All TV Shows Page](public/images/readme/allshows.png)
 
 This is where every show added to the database is listed. From here you can click into the details of each show and edit if you are the original creater. You can also go in and leave comments for each movie.
 
-![TV Show Detail Page](public/image/readme/showdetailpage.png)
+![TV Show Detail Page](public/images/readme/showdetailpage.png)
 On every show detail page, you can see the title, release year, IMDB Link, and more for that show.
 
-![Add a TV Show that's not listed](public/image/readme/createshow.png)
+![Add a TV Show that's not listed](public/images/readme/createshow.png)
 If there's a movie you want to add to a list or recommend, but it's not listed, you can add it on this page if you are signed in.
 
-![Recommendation List](public/image/readme/reclistadd.png)
+![Recommendation List](public/images/readme/reclistadd.png)
 You can create a recommendation list for any category. You add a title and a description, and then choose your  movies from a list to add to your recommendation list.
 
 # Technologies Used
