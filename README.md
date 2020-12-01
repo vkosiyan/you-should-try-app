@@ -67,4 +67,5 @@ You can create a recommendation list for any category. You add a title and a des
 * Add an API for tv shows and movies so that users do not have to add them manually
 * Add the ability to search for a show or movie in a search bar
 * Add the ability to sort movies or lists by a category (eg: genre, streaming platforms, mpaaRating)
+* Add other media such as books, video games, podcasts to recommend and create lists for
 * Improve styling of certain pages to look more appealing
