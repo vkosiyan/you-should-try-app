@@ -79,14 +79,6 @@ color: rgb(224, 82, 0);
   grid-template-columns: repeat(2, minmax(auto, 22rem));
 }
 
-#new-form *,
-#add-review-form *,
-#add-performer-form * {
-  font-size: 20px;
-  padding: 5px;
-  border-radius: 5px;
-}
-
 #new-form input[type="submit"] {
   grid-column: span 2;
   width: 10rem;
@@ -131,15 +123,18 @@ table.profile {
   text-align: left;
   border-collapse: collapse;
 }
+
 table.profile td, table.profile th {
   border: 1px solid #AAAAAA;
   padding: 3px 2px 5px 5px;
 }
+
 table.profile tbody td {
   font-size: 18px;
   font-weight: bold;
   text-align: left
 }
+
 table.profile td:nth-child(odd) {
   background: #D0E4F5;
 }
@@ -172,7 +167,6 @@ table.profile td:nth-child(odd) {
   grid-gap: 1rem;
 }
 
-
 #show-page div:nth-child(even) {
   font-weight: bold;
 }
@@ -182,20 +176,6 @@ img.showimage {
   width: 250px;
   height: auto;
   margin: auto;
-}
-
-#add-review-form,
-#add-performer-form {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-#add-review-form input[type="submit"],
-#add-performer-form input[type="submit"] {
-  width: 10rem;
-  grid-column: 2 / 3;
 }
 
 ul {
@@ -218,7 +198,7 @@ li {
   font-weight: bold;
 }
 
-/* Dropdown Button */
+/* Dropdown Buttons */
 .dropbtn-tv {
   text-decoration: none;
   padding: 20px 50px 20px 50px;
@@ -307,7 +287,6 @@ li {
   font-size: 15px;
 }
 
-
 /* Links inside the dropdown */
 .dropdown-content-tv a {
   color: black;
@@ -336,7 +315,6 @@ li {
   border-width: 1px;
 }
 
-
 /* Change color of dropdown links on hover */
 .dropdown-content-tv a:hover {
   color: white;
@@ -356,25 +334,21 @@ li {
   cursor: pointer;
 }
 
-
 /* Show the dropdown menu on hover */
 .dropdown-tv:hover .dropdown-content-tv {
   display: block;
   cursor: pointer;
 }
 
-
 .dropdown-profile:hover .dropdown-content-profile {
   display: block;
   cursor: pointer;
 }
 
-
 .dropdown-lists:hover .dropdown-content-lists {
   display: block;
   cursor: pointer;
 }
-
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown-tv:hover .dropbtn-tv {
@@ -420,4 +394,9 @@ button.form {
 .tvheader {
   background-color: rgb(168, 188, 207);
   color: white
+}
+
+#index {
+  text-align: center;
+  margin: 0 0 0 0;
 }

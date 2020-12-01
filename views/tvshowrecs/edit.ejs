@@ -2,7 +2,7 @@
 <%- include('../partials/header') %>
 
 <form id="new-form" action="/tvshowrecs/<%= tvshowrec.id %>?_method=PUT" method="POST" autocomplete="off">
-  <label>List Title:</label>
+    <label>List Title:</label>
   <input type="text" name="title" value="<%= tvshowrec.title %>">
   <label>List Description:</label>
   <input type="text" name="listDesc" value="<%= tvshowrec.listDesc %>">

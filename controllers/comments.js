@@ -21,36 +21,34 @@ function create(req, res) {
   }
 
   function update(req, res) {
-    // Note the cool "dot" syntax to query on the property of a subdoc
     Tvshow.findOne({'comments._id': req.params.id}, function(err, tvshow) {
-      // Find the comment subdoc using the id method on Mongoose arrays
+      // Finds the comment subdoc using the id method on Mongoose arrays
       // https://mongoosejs.com/docs/subdocs.html
       const commentSubdoc = tvshow.comments.id(req.params.id);
-      // Ensure that the comment was created by the logged in user
+      // Ensures that the comment was created by the logged in user
       if (!commentSubdoc.userId.equals(req.user._id)) return res.redirect(`/tvshows/${tvshow._id}`);
-      // Update the text of the comment
+      // Updates the text of the comment
       commentSubdoc.text = req.body.text;
-      // Save the updated book
+      // Saves the updated tv show
       tvshow.save(function(err) {
-        // Redirect back to the book's show view
+        // Redirects back to the tv show's show view
         res.redirect(`/tvshows/${tvshow._id}`);
       });
     });
   }
 
   function deleteOne(req, res) {
-    // Note the cool "dot" syntax to query on the property of a subdoc
     Tvshow.findOne({'comments._id': req.params.id}, function(err, tvshow) {
-      // Find the comment subdoc using the id method on Mongoose arrays
+      // Finds the comment subdoc using the id method on Mongoose arrays
       // https://mongoosejs.com/docs/subdocs.html
       const commentSubdoc = tvshow.comments.id(req.params.id);
-      // Ensure that the comment was created by the logged in user
+      // Ensures that the comment was created by the logged in user
       if (!commentSubdoc.userId.equals(req.user._id)) return res.redirect(`/tvshows/${tvshow._id}`);
-      // Remove the comment using the remove method of the subdoc
+      // Removes the comment using the remove method of the subdoc
       commentSubdoc.remove();
-      // Save the updated book
+      // Saves the updated tv show
       tvshow.save(function(err) {
-        // Redirect back to the book's show view
+        // Redirects back to the tv show's show view
         res.redirect(`/tvshows/${tvshow._id}`);
       });
     });
@@ -58,7 +56,7 @@ function create(req, res) {
 
   function edit(req, res) {
     Tvshow.findById(req.params.id, function(err, tvshow) {
-      // Verify book is "owned" by logged in user
+      // Verifies tv show is "owned" by logged in user
       if (!tvshow.user.equals(req.user._id)) return res.redirect(`/tvshows/${tvshow._id}`);
       res.render(`/tvshows/${tvshow._id}`);
     });

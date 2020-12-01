@@ -4,53 +4,47 @@
     <tr>
        <td rowspan = "1"><img class="showimage" src="<%= tvshow.imageLink %>"></img></td>
        <td><b>Release Year:</b> <%= tvshow.releaseYear %>
-        <br><br>
-        <b>mpaaRating:</b> <%= tvshow.mpaaRating %>
-        <br><br>
-        <b>Description Link:</b> <br>
-        <a href="<%= tvshow.tvshowlink %>"><%= tvshow.tvshowlink %></a>
-        <br><br>
-        <b>Genre:</b> <%= tvshow.genre %>
-        <br><br>
-        <b>Where You Can Stream:</b> <%= tvshow.whereToWatch %>
-        <br><br>
+          <br><br>
+          <b>mpaaRating:</b> <%= tvshow.mpaaRating %>
+          <br><br>
+          <b>Description Link:</b> <br>
+          <a href="<%= tvshow.tvshowlink %>"><%= tvshow.tvshowlink %></a>
+          <br><br>
+          <b>Genre:</b> <%= tvshow.genre %>
+          <br><br>
+          <b>Where You Can Stream:</b> <%= tvshow.whereToWatch %>
+          <br><br>
+       </td>
     </tr>
  </table>
-
-
-
- <% if (user) { %>
-  
+ 
+ <% if (user) { %>  
 <table>
   <tr>
-  <td>
- 
-  </td><td>
-    <a href="/tvshows/<%= tvshow._id %>/edit">
-    <button type="submit" class="form">EDIT SHOW DETAILS</button></a>
-  </td><td>
-    <form action="/tvshows/<%= tvshow.id %>?_method=DELETE" method="POST">
-        <button type="submit" class="form">DELETE SHOW</button>
-    </form>
-  </td>
-</tr>
-  </table>
+    <td>
+      <a href="/tvshows/<%= tvshow._id %>/edit">
+      <button type="submit" class="form">EDIT SHOW DETAILS</button>
+      </a>
+    </td>
+    <td>
+      <form action="/tvshows/<%= tvshow.id %>?_method=DELETE" method="POST">
+          <button type="submit" class="form">DELETE SHOW</button>
+      </form>
+    </td>
+  </tr>
+</table>
   <% } else { %>
-
   <% } %>
-<Br><Br>
-
-
+<br><br>
+  
   <% if (user) { %>
     
   <table class="show">
-
     <tbody>
       <form action="/tvshows/<%= tvshow._id %>/comments" method="POST">
-        <!-- Be sure name attributes of inputs match the model properties -->
-        <tr><td> 
+      <tr><td> 
           <label>Would you recommend this show?</label>
-        </td><td style="width:250px">
+      </td><td style="width:250px">
         <input type="text" name="wouldRecommend" style="width:100%;"/>
       </td></tr><tr><td>
         <label>Comment:</label>
@@ -63,8 +57,8 @@
     </tbody>
   </table>
 <% } else { %>
-
 <% } %>
+
 <% if (tvshow.comments.length) { %>
   <br>
   <table class="comments">
@@ -82,42 +76,37 @@
           <td style="width: 400px;"><b>Would You Recommend? </b><%= comment.wouldRecommend %>
             <br><br>
             <b>Comment:</b> <%= comment.content %> </td>
-            <td style="width: 16px;">
+          <td style="width: 16px;">
               <% if (user) { %>
               <% if (comment.userId.equals(user._id)) { %>
-              <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                <button type="submit" class="form">X</button>
-              </form>
+            <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
+              <button type="submit" class="form">X</button>
+            </form>
               <% } %>
               <% } else { %>
-
-                <% } %></td>
-           </tr>
-          <tr>
+              <% } %></td>
+        </tr>
+        <tr>
           <td style="width: 31px;">
           </td>
           <td style="width: 34px;">
-            <% if (user) { %>
-            
-            <form action="/comments/<%= comment._id %>?_method=PUT" method="POST">
-            <!-- Value attribute is being set to the comment's current text -->
-            <input type="text" name="wouldRecommend" value="<%= comment.wouldRecommend %>">
-            <input type="text" name="content" value="<%= comment.content %>">
-            <button type="submit" class="form">UPDATE COMMENT</button>
+              <% if (user) { %>            
+            <form action="/comments/<%= comment._id %>?_method=PUT" method="POST">          
+              <input type="text" name="wouldRecommend" value="<%= comment.wouldRecommend %>">
+              <input type="text" name="content" value="<%= comment.content %>">
+              <button type="submit" class="form">UPDATE COMMENT</button>
           </form>
           <% } else { %>
-
             <% } %>
           <% }) %>
           </td>      
           </tr>          
-        </div>    
+
     </tbody>
-  </table>
+</table>
 <% } else { %>
   <h5>No Comments Yet</h5>
 <% } %>
-
 
 
 <%- include('../partials/footer') %>

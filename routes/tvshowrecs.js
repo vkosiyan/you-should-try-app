@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const tvshowrecsCtrl = require('../controllers/tvshowrecs');
-	
-// GET /tvshows/new
+
 router.get('/new', tvshowrecsCtrl.new);
 router.post('/', tvshowrecsCtrl.create);
 router.get('/', tvshowrecsCtrl.index);

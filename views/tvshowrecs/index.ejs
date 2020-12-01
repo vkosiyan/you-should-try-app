@@ -2,7 +2,7 @@
 <%- include('../partials/header') %>
 <table>
   <thead>
-    <tr class="showheader">
+    <tr>
       <th colspan="2">Title</th>
       <th>List Decription</th>
       <th>Details</th>
@@ -11,24 +11,24 @@
   <tbody>
       <% tvshowrecs.forEach(s => { %>
        
-    <!-- Write the line of EJS to iterate over shows using forEach -->
+    <!-- EJS that will be iterated over using forEach -->
       <tr>
         <td><b><img src="<%= s.imageLink %>" width="150px"></b></td>
         <td><b><%= s.title %></b></td>
         <td><%= s.listDesc %></td>
         <td><a href="/tvshowrecs/<%= s._id %>">DETAILS</a></td>
       </tr>
-    <!-- Close the forEach using EJS here -->
+    <!-- Closing forEach using EJS here -->
+
     <% }) %> 
+
   </tbody>
 </table>
 <br>
-<% if (user) { %>
-    
+
+<% if (user) { %>    
   <a href='/tvshowrecs/new'>Create a List</a>
-
 <% } else { %>
-
 <% } %>
 
 

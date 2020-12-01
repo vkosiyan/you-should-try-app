@@ -4,10 +4,8 @@ const userSchema = new mongoose.Schema({
     name: String,
     username: String,
     email: String,
-    tvshowlists: [],
-    moviesAdded:[],
     avatar: String,
-    googleId: String,
+    googleId: String
   }, {
     timestamps: true
   });

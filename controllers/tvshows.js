@@ -11,13 +11,11 @@ module.exports = {
   edit,
   delete: deleteTvshow,
   update,
-  addWatching
 };
 
 function addToList(req, res) {
   TvshowRec.findById(req.params.id, function (err, tvshowrec) {
     tvshowrec.tvshows.push(req.body.tvshowId);
-    console.log('CHECK ME', req.body);
     tvshowrec.save(function (err) {
       res.redirect(`/tvshowrecs/${tvshowrec._id}`);
     });
@@ -26,11 +24,10 @@ function addToList(req, res) {
 
 function create(req, res) {
   const tvshow = new Tvshow(req.body);
-  // Assign the logged in user's id
+  // Assigns the logged in user's id
   tvshow.user = req.user._id;
   tvshow.save(function(err) {
     if (err) return render('tvshows/new');
-    // Probably want to go to newly added book's show view
     res.redirect(`/tvshows/${tvshow._id}`);
   });
 }
@@ -47,7 +44,6 @@ function newTvshow(req, res) {
 function show(req, res) {
   Tvshow.findById(req.params.id, function(err, tvshow) {
     TvshowRec.find({}, function(err, tvshowrecs){
-      console.log(tvshow);
       res.render('tvshows/show', { title: `${tvshow.title}`, tvshow, tvshowrecs });
     })   
   });
@@ -61,7 +57,7 @@ function index(req, res) {
 
 function edit(req, res) {
   Tvshow.findById(req.params.id, function(err, tvshow) {
-    // Verify book is "owned" by logged in user
+    // Verifies that tv show is "owned" by logged in user
     if (!tvshow.user.equals(req.user._id)) return res.redirect(`/tvshows/${tvshow._id}`);
     res.render(`tvshows/edit`, { title: 'Edit Show', tvshow});
   });
@@ -70,9 +66,9 @@ function edit(req, res) {
 function deleteTvshow(req, res) {
   Tvshow.findById(req.params.id, function(err, tvshow) {
   if (!tvshow.user.equals(req.user._id)) return res.redirect(`/tvshows/${tvshow._id}`);
-  tvshow.remove();
-  tvshow.save(function(err){
-    res.redirect('/tvshows');
+    tvshow.remove();
+    tvshow.save(function(err){
+      res.redirect('/tvshows');
     })
   })
 }
@@ -91,16 +87,3 @@ function update(req, res) {
     });
   });  
 }
-
-function addWatching(req, res) {
-  Tvshow.findById(req.params.id, function(err, tvshow) {
-    // Ensure that user is not already in usersReading
-    // See "Finding a Subdocument" in https://mongoosejs.com/docs/subdocs.html
-    if (tvshow.usersWatching.id(req.user._id)) return res.redirect('/tvshows');
-    tvshow.usersWatching.push(req.user._id);
-    tvshow.save(function(err) {
-      res.redirect(`/tvshows/${tvshow._id}`);
-    });
-  });
-}
-

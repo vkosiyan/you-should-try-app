@@ -20,38 +20,32 @@
     
   <ol>
     <%- tvshowrec.tvshows.map(t => 
-    `<table><th colspan="3" class="showrec"></th><li>${t.title}</li></th>
-      <tr>
-      <td><img src="${t.imageLink}" width="200"></td>
-      <td><td><b>Release Year:</b> ${t.releaseYear}
- <br><br>
- <b>mpaaRating:</b> ${t.mpaaRating}
+    `<table>
+      <th colspan="3" class="showrec"></th><li>${t.title}</li></th>
+        <tr>
+          <td><img src="${t.imageLink}" width="200"></td>
+          <td><b>Release Year:</b> ${t.releaseYear}
+            <br><br>
+            <b>mpaaRating:</b> ${t.mpaaRating}
 
- <br><br>
- <b>Genre:</b> ${t.genre}
- <br><br>
- <b>Where You Can Stream:</b> ${t.whereToWatch}
- <br><br>
- <a href="/tvshows/${t._id}">Show Details</a>
-</td>
-    </tr>
-    
-  </td>
+            <br><br>
+            <b>Genre:</b> ${t.genre}
+            <br><br>
+            <b>Where You Can Stream:</b> ${t.whereToWatch}
+            <br><br>
+            <a href="/tvshows/${t._id}">Show Details</a>
+          </td>
+        </tr>
     </table>
-    `
-  ).join('') %>
-
-
+    `).join('') %>
   </ol>
     <form id="add-show-to-rec" action="/tvshowrecs/<%=tvshowrec._id%>/tvshows" method="POST">
       <select name="tvshowId">
         <%- tvshows.map(t => 
-          `<option value="${t._id}">${t.title}</option>`
-        ).join('') %>
+          `<option value="${t._id}">${t.title}</option>`).join('') %>
       </select>
       <button type="submit">Add Movie to List</button>
     </form>
-
 
 
 <%- include('../partials/footer') %>

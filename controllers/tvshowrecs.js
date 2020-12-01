@@ -20,7 +20,6 @@ function create(req, res){
   tvshowRec.user = req.user._id;
   tvshowRec.save(function(err){
     if(err) return res.render('tvshowrecs/new');
-    console.log(tvshowRec)
     res.redirect(`/tvshowrecs/${tvshowRec._id}`);
   })
 }
@@ -31,17 +30,17 @@ function show(req, res) {
             {_id: {$nin: tvshowrec.tvshows}},
             function(err, tvshows) {
                 res.render('tvshowrecs/show', { title: `${tvshowrec.title}`, tvshowrec, tvshows });
-            });
-            }
-        )
+        });
+      }
+    )
 }
 
 function deleteTvShowRec(req, res) {
   TvshowRec.findById(req.params.id, function(err, tvshowrec) {
   if (!tvshowrec.user.equals(req.user._id)) return res.redirect(`/tvshowrecs/${tvshowrec._id}`);
-  tvshowrec.remove();
-  tvshowrec.save(function(err){
-    res.redirect('tvshowsrecs');
+    tvshowrec.remove();
+    tvshowrec.save(function(err){
+      res.redirect('tvshowsrecs');
     })
   })
 }
@@ -54,9 +53,9 @@ function index(req,res){
 
 function edit(req, res) {
   TvshowRec.findById(req.params.id, function(err, tvshowrec) {
-    // Verify book is "owned" by logged in user
+    // Verifies tv show is "owned" by logged in user
     if (!tvshowrec.user.equals(req.user._id)) return res.redirect(`/tvshowrecs/${tvshowrec._id}`);
-    res.render(`tvshowrecs/edit`, { title: 'Edit List Details', tvshowrec});
+      res.render(`tvshowrecs/edit`, { title: 'Edit List Details', tvshowrec});
   });
 }
 

@@ -53,7 +53,7 @@ You can create a recommendation list for any category. You add a title and a des
         * Project To Do List
         * Original wireframes for the project
         * Bugs to fix
-     * Ice Box 
+        * Ice Box 
 
 # Next Steps
 

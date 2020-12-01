@@ -1,16 +1,29 @@
 
 <%- include('partials/header') %>
-<table>
-
-     
-      <tr>
+<table id="index">     
+    <tr>
         <td colspan="3"><img src="/images/getstarted.png"></td>
     </tr>
     <tr>
-        <td><a href="/tvshowrecs/5fc6593b5793e4807a7cce83"><img src="/images/comedylist.png"></a></td>
-        <td><a href="/tvshowrecs/5fc65ad45793e4807a7cce84"><img src="/images/sci-filist.png"></a></td>
-        <td><a href="/tvshowrecs/5fc666c75793e4807a7cce88"><img src="/images/animatedlist.png"></a></td>
+        <td><img src="/images/comedylist.png"><br>
+            <a href="/tvshowrecs/5fc6593b5793e4807a7cce83"><button type="submit" class="form">FAVORITE COMEDIES</button></a></td>
+        <td><img src="/images/sci-filist.png"><br>
+            <a href="/tvshowrecs/5fc65ad45793e4807a7cce84"><button type="submit" class="form">FAVORITE ACTION/SCI-FI</button></a></td>
+        <td><img src="/images/animatedlist.png"><br>
+            <a href="/tvshowrecs/5fc666c75793e4807a7cce88"><button type="submit" class="form">FAVORITE ANIMATED SHOWS</button></a></td>
     </tr>
-
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><img src="/images/tvshows.png"><br>
+            <a href="/tvshows"><button type="submit" class="form">SEE ALL MOVIES</button></a></td>
+        <td><img src="/images/reclists.png"><br>
+            <a href="/tvshowrecs"><button type="submit" class="form">SEE ALL LISTS</button></a></td>
+        <td><img src="/images/signin.png"><br>
+            <a href="/auth/google"><button type="submit" class="form">SIGN UP/IN</button></a></td>
+    </tr>
   </table>
 <%- include('partials/footer') %>

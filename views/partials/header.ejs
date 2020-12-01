@@ -11,8 +11,8 @@
   <!-- JavaScript for Materialize -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <title><%= title %></title>
-
 </head>
+
 <body>
   <nav>
     <img src="/images/banner.png">
@@ -21,28 +21,33 @@
              
              <div class="dropdown-tv">
               <button class="dropbtn-tv">TV SHOWS</button>
-            <div class="dropdown-content-tv">
-              <a href="/tvshows" <%- title === 'All Movies' ? 'class="active"' : '' %>>ALL TV SHOWS</a>
-              <a href="/tvshows/new" <%- title === 'Add Movie' ? 'class="active"' : '' %>>ADD TV SHOW</a>  
+              <div class="dropdown-content-tv">
+                <a href="/tvshows" <%- title === 'All Movies' ? 'class="active"' : '' %>>ALL TV SHOWS</a>
+                <a href="/tvshows/new" <%- title === 'Add Movie' ? 'class="active"' : '' %>>ADD TV SHOW</a>  
+              </div>
             </div>
             <div class="dropdown-lists">
               <button class="dropbtn-lists">LISTS</button>
-            <div class="dropdown-content-lists">
-              <a href="/tvshowrecs" <%- title === 'Recommendation Lists' ? 'class="active"' : '' %>>RECOMMENDATION LISTS</a>
-              <a href="/tvshowrecs/new" <%- title === 'Recommendation Lists' ? 'class="active"' : '' %>>CREATE NEW LIST</a> 
-            </div>       
-            
+              <div class="dropdown-content-lists">
+                <a href="/tvshowrecs" <%- title === 'Recommendation Lists' ? 'class="active"' : '' %>>RECOMMENDATION LISTS</a>
+                <a href="/tvshowrecs/new" <%- title === 'Recommendation Lists' ? 'class="active"' : '' %>>CREATE NEW LIST</a> 
+               </div>
+            </div>               
             <div class="dropdown-profile">
               <button class="dropbtn-profile"><%= user.name %></a></button>
               <div class="dropdown-content-profile">
                 <a href="/user">MY PROFILE</a>
                 <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
               </div>
+            </div>
+
           <% } else { %>
+            
             <a href="/tvshows" <%- title === 'All Movies' ? 'class="active"' : '' %>>ALL TV SHOWS</a>
             <a href="/tvshowrecs/" <%- title === 'Movie Lists' ? 'class="active"' : '' %>>RECOMMENDATION LISTS</a>
             <a href="/auth/google" <%- title === 'Login' ? 'class="active"' : '' %>><i class="material-icons left">vpn_key</i>LOGIN WITH GOOGLE</a>
-            <% } %>
+            
+          <% } %>
 
   </nav>
 

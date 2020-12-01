@@ -5,7 +5,6 @@ const request = require('request');
 const key = process.env.TMDB_KEY;
 const rootURL = 'https://api.thetvshowdb.org';
 
-// The root route renders our only view
 router.get('/', function(req, res, next) {
   const genreName = req.query.name;
   request(`${rootURL}/3/genre/tvshow/list?api_key=${key}&language=en-US`, 
@@ -13,8 +12,6 @@ router.get('/', function(req, res, next) {
     console.log(body)
     res.render('index', {title: ' ', tvshowData: body})
   })
-
-
 });
 
 // Google OAuth login route
