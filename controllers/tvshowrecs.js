@@ -40,7 +40,7 @@ function deleteTvShowRec(req, res) {
   if (!tvshowrec.user.equals(req.user._id)) return res.redirect(`/tvshowrecs/${tvshowrec._id}`);
     tvshowrec.remove();
     tvshowrec.save(function(err){
-      res.redirect('tvshowsrecs');
+      res.redirect('/tvshowrecs/');
     })
   })
 }

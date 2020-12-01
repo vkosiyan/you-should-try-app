@@ -3,8 +3,9 @@
   <thead>
     <tr class="tvheader">
       <th colspan="2">Title</th>
-      <th>Release<br>Year</th>
+      <th>Genre</th>
       <th>Details</th>
+      <th>Streaming Platforms</th>
     </tr>
   </thead>
   <tbody>
@@ -16,7 +17,8 @@
       <tr class="tv">
         <td><img src="<%= t.imageLink %>" width="100px"></td>
         <td><%= t.title %></td>
-        <td><%= t.releaseYear %></td>
+        <td><%= t.genre %></td>
+        <td><%= t.whereToWatch %></td>
         <td><a href="/tvshows/<%= t._id %>">DETAILS</a></td>
       </tr>
       <% }); %>
