@@ -22,7 +22,6 @@ var indexRoutes = require('./routes/index');
 var userRoutes = require('./routes/user');
 var tvshowsRoutes = require('./routes/tvshows');
 var tvshowrecsRoutes = require('./routes/tvshowrecs');
-var tvShowRecItemsRoutes = require('./routes/tvshowrecitems.js');
 var commentsRoutes = require('./routes/comments');
 
 // view engine setup
@@ -53,9 +52,8 @@ app.use(function (req, res, next) {
 // mount all routes with appropriate base paths
 app.use('/', indexRoutes);
 app.use('/user', userRoutes);
-app.use('/tvshows', tvshowsRoutes);
+app.use('/', tvshowsRoutes);
 app.use('/tvshowrecs', tvshowrecsRoutes);
-app.use('/', tvShowRecItemsRoutes);
 app.use('/', commentsRoutes);
 
 // invalid request, send 404 page

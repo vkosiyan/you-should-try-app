@@ -7,6 +7,5 @@ router.get('/new', tvshowrecsCtrl.new);
 router.post('/', tvshowrecsCtrl.create);
 router.get('/', tvshowrecsCtrl.index);
 router.get('/:id', tvshowrecsCtrl.show);
-router.post('/:id', tvshowrecsCtrl.addListItem)
 	
 module.exports = router;

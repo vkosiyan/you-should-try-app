@@ -3,7 +3,8 @@ const Tvshow = require('../models/tvshow');
 module.exports = {
 create,
 update,
-delete: deleteOne
+delete: deleteOne,
+edit
 };
 
 function create(req, res) {
@@ -52,5 +53,13 @@ function create(req, res) {
         // Redirect back to the book's show view
         res.redirect(`/tvshows/${tvshow._id}`);
       });
+    });
+  }
+
+  function edit(req, res) {
+    Tvshow.findById(req.params.id, function(err, tvshow) {
+      // Verify book is "owned" by logged in user
+      if (!tvshow.user.equals(req.user._id)) return res.redirect(`/tvshows/${tvshow._id}`);
+      res.render(`/tvshows/${tvshow._id}`);
     });
   }

@@ -7,18 +7,24 @@
   <div></div>
   <div>Movies:</div>
   <ul>
-    <%- tvshowrec.tvshowrecitem.map(m => 
-      `<h2>${m.listnumber}. ${m.title}</h2>
-      <h3>Comments</h3>
-      <li>${m.description}</li>
-      <a href="/tvshowrecitems/${m._id}">DETAILS</a>
-      `
-    ).join('') %>
-  </ul>  
-  <form action="/tvshowrecs/<%= tvshowrec._id%>/tvshowrecitems/new">
-    <input type="submit" value="Add a tvshow list item" />
-</form>
+    <%- tvshowrec.tvshows.map(t => 
+    `<img src="${t.imageLink}"><img><li>${t.title}</li>
+    <li>${t.releaseYear}</li>
+    `
+  ).join('') %>
+
+
+  </ul>
+    <form id="add-show-to-rec" action="/tvshowrecs/<%=tvshowrec._id%>/tvshows" method="POST">
+      <select name="tvshowId">
+        <%- tvshows.map(t => 
+          `<option value="${t._id}">${t.title}</option>`
+        ).join('') %>
+      </select>
+      <button type="submit">Add Movie to List</button>
+    </form>
 
 
 
 <%- include('../partials/footer') %>
+

@@ -5,6 +5,7 @@ const userSchema = new mongoose.Schema({
     username: String,
     email: String,
     tvshowlists: [],
+    moviesAdded:[],
     avatar: String,
     googleId: String,
   }, {

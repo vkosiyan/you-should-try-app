@@ -1,38 +1,68 @@
 
 <%- include('../partials/header') %>
-<section id="show-page">
-    <div>Title: </div>
-    <div><%= tvshow.title %></div>
-    <div>Release Year: </div>
-    <div><%= tvshow.releaseYear %></div>
-    <div>Rating: </div>
-    <div><%= tvshow.mpaaRating %></div>
-    <div>Description Link: </div>
-    <div><%= tvshow.tvshowlink %></div>
-    <div>Genre:</div>
-    <div><%= tvshow.genre%></div>
-    <div>Where You Can Watch:</div>
-    <div><%= tvshow.whereToWatch%></div>
-  </section>
-<br> <br>
-  <a href="/tvshows/<%= tvshow._id %>/edit">EDIT MOVIE DETAILS</a>
-<br><br>
-    <form action="/tvshows/<%= tvshow.id %>?_method=DELETE"
-        id="delete-form" method="POST">
-        <button type="submit">DELETE MOVIE</button>
+  <table class="show">
+    <tr>
+       <td rowspan = "1"><img class="showimage" src="<%= tvshow.imageLink %>"></img></td>
+       <td><b>Release Year:</b> <%= tvshow.releaseYear %>
+        <br><br>
+        <b>mpaaRating:</b> <%= tvshow.mpaaRating %>
+        <br><br>
+        <b>Description Link:</b> <br>
+        <a href="<%= tvshow.tvshowlink %>"><%= tvshow.tvshowlink %></a>
+        <br><br>
+        <b>Genre:</b> <%= tvshow.genre %>
+        <br><br>
+        <b>Where You Can Stream:</b> <%= tvshow.whereToWatch %>
+    </tr>
+ </table>
+
+
+
+ <% if (user) { %>
+  
+<table>
+  <tr>
+  <td>
+  <a href="/tvshows/<%= tvshow._id %>/edit">
+  </td><td>
+    <button type="submit" class="form">EDIT MOVIE DETAILS</button></a>
+  </td><td>
+    <form action="/tvshows/<%= tvshow.id %>?_method=DELETE" method="POST">
+        <button type="submit" class="form">DELETE MOVIE</button>
     </form>
+  </td>
+</tr>
+  </table>
+  <% } else { %>
+
+  <% } %>
 <Br><Br>
 
-    <!-- Using the RESTful route to send the book's id to the server -->
-<form action="/tvshows/<%= tvshow._id %>/comments" method="POST">
-  <!-- Be sure name attributes of inputs match the model properties -->
-  <label>Would you recommend this show?</label>
-  <input type="text" name="wouldRecommend"><br><Br>
-  <label>Comment:</label>
-  <input type="text" name="content">
-  <button type="submit">ADD COMMENT</button>
-</form>
 
+<% if (user) { %>
+    
+  <table class="show">
+
+    <tbody>
+      <form action="/tvshows/<%= tvshow._id %>/comments" method="POST">
+        <!-- Be sure name attributes of inputs match the model properties -->
+        <tr><td> 
+          <label>Would you recommend this show?</label>
+        </td><td style="width:250px">
+        <input type="text" name="wouldRecommend" style="width:100%;"/>
+      </td></tr><tr><td>
+        <label>Comment:</label>
+      </td><td style="width:250px">
+        <input type="text" name="content" style="width:100%;"/>
+      </td></tr><tr><td></td><td>
+        <button type="submit" class="form">ADD COMMENT</button>
+      </td></tr>
+      </form>
+    </tbody>
+  </table>
+<% } else { %>
+
+<% } %>
 <% if (tvshow.comments.length) { %>
   <table>
     <thead>
@@ -43,7 +73,6 @@
       </tr>
     </thead>
     <tbody>
-
       <% tvshow.comments.forEach(function(comment) { %>
         <tr>
         <div class="comment">
@@ -53,9 +82,15 @@
           <td><%= comment.createdAt.toLocaleDateString() %></td>
           <td><% if (comment.userId.equals(user._id)) { %>
             <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
-              <button type="submit">X</button>
+              <button type="submit" class="form">X</button>
             </form>
-          <% } %></td>       
+          <% } %></td> 
+          <td><form action="/comments/<%= comment._id %>?_method=PUT" method="POST">
+            <!-- Value attribute is being set to the comment's current text -->
+            <input name="text" value="<%= comment.wouldRecommend %>">
+            <input name="text" value="<%= comment.content %>">
+            <button type="submit" class="form">UPDATE COMMENT</button>
+          </form></td>      
         </div>
       <% }) %>
         </tr>

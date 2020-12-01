@@ -1,10 +1,11 @@
 const User = require('../models/user');
+const TvShow = require('../models/tvshow');
 
 module.exports = {
     index,
     addFact,
     delFact
-  };
+    };
 
   function index(req, res, next) {
     console.log(req.query)
@@ -15,6 +16,7 @@ module.exports = {
     let sortKey = req.query.sort || 'name';
     User.find(modelQuery)
     .sort(sortKey).exec(function(err, user) {
+      console.log(user)
       if (err) return next(err);
       // Passing search values, name & sortKey, for use in the EJS
       res.render('user/index', {
@@ -26,7 +28,6 @@ module.exports = {
       });
     });
   }
-
 
 function addFact(req, res, next) {
     req.user.facts.push(req.body);

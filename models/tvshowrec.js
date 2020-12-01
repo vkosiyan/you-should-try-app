@@ -4,10 +4,11 @@ const Schema = mongoose.Schema;
 
 
 const tvshowListSchema = new Schema({
-  tvshowrecitem: [{type: Schema.Types.ObjectId, ref: 'TvshowRecItem'}],
+  user: { type: Schema.Types.ObjectId, ref: 'User'},
     title: String,
     listDesc: String,
-    user: String
+    user: String,
+    tvshows: [{type: Schema.Types.ObjectId, ref: 'Tvshow'}]
     });
 
 module.exports = mongoose.model('TvshowRec', tvshowListSchema);

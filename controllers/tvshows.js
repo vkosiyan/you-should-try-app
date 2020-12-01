@@ -1,10 +1,11 @@
 const Tvshow = require('../models/tvshow');
-const TvshowRecItem = require('../models/tvshowrecitem');
+const TvshowRec = require('../models/tvshowrec')
+const comments = require('./comments');
 
 module.exports = {
   new: newTvshow,
   create,
-  addToListItem,
+  addToList,
   show,
   index,
   edit,
@@ -13,11 +14,12 @@ module.exports = {
   addWatching
 };
 
-function addToListItem(req, res) {
-  TvshowRecItem.findById(req.params.id, function (err, tvshowrecitem) {
-    tvshowrecitem.tvshows.push(req.body.tvshowId);
-    tvshowrecitem.save(function (err) {
-      res.redirect(`/tvshowrecitems/${tvshowrecitem._id}`);
+function addToList(req, res) {
+  TvshowRec.findById(req.params.id, function (err, tvshowrec) {
+    tvshowrec.tvshows.push(req.body.tvshowId);
+    console.log('CHECK ME', req.body);
+    tvshowrec.save(function (err) {
+      res.redirect(`/tvshowrecs/${tvshowrec._id}`);
     });
   });
 }
@@ -31,13 +33,12 @@ function create(req, res) {
     // Probably want to go to newly added book's show view
     res.redirect(`/tvshows/${tvshow._id}`);
   });
-
 }
 
 function newTvshow(req, res) {
   Tvshow.find({}, function (err, tvshows) {
     res.render('tvshows/new', {
-      title: 'Add Tvshow',
+      title: 'Add a TV Show',
       tvshows
     });
   })
@@ -45,42 +46,58 @@ function newTvshow(req, res) {
 
 function show(req, res) {
   Tvshow.findById(req.params.id, function(err, tvshow) {
-    res.render('tvshows/show', { title: 'Tvshow Detail', tvshow });
+    res.render('tvshows/show', { title: `${tvshow.title}`, tvshow });
   });
 }
 
 function index(req, res) {
   Tvshow.find({}, function(err, tvshows) {
-    res.render('tvshows/index', { title: 'All Tvshows', tvshows });
+    res.render('tvshows/index', { title: 'All Tv Shows', tvshows });
   });
 }
 
 function edit(req, res) {
   Tvshow.findById(req.params.id, function(err, tvshow) {
     // Verify book is "owned" by logged in user
-    if (!tvshow.user.equals(req.user._id)) return res.redirect('/tvshows');
-    res.render('tvshows/edit', { title: 'Edit Show', tvshow});
+    if (!tvshow.user.equals(req.user._id)) return res.redirect(`/tvshows/${tvshow._id}`);
+    res.render(`tvshows/edit`, { title: 'Edit Show', tvshow});
   });
 }
 
 function deleteTvshow(req, res) {
-  Tvshow.deleteOne(req.params.id);
-  res.redirect('/tvshows');
+  Tvshow.findById(req.params.id, function(err, tvshow) {
+  if (!tvshow.user.equals(req.user._id)) return res.redirect(`/tvshows/${tvshow._id}`);
+  tvshow.remove();
+  tvshow.save(function(err){
+    res.redirect('/tvshows');
+    })
+  })
 }
 
 function update(req, res) {
-  Tvshow.update(req.params.id, req.body);
-  res.redirect(`/tvshows/${req.params.id}`);
+  Tvshow.findById(req.params.id, function(err, tvshow) {
+    tvshow.title = req.body.title;
+    tvshow.releaseYear = req.body.releaseYear;
+    tvshow.mpaaRating = req.body.mpaaRating;
+    tvshow.tvshowlink = req.body.tvshowlink;
+    tvshow.imageLink = req.body.imageLink;
+    tvshow.genre = req.body.genre;
+    tvshow.whereToWatch = req.body.whereToWatch;
+    tvshow.save(function(err) {
+      res.redirect(`/tvshows/${tvshow._id}`);
+    });
+  });  
 }
 
 function addWatching(req, res) {
   Tvshow.findById(req.params.id, function(err, tvshow) {
     // Ensure that user is not already in usersReading
     // See "Finding a Subdocument" in https://mongoosejs.com/docs/subdocs.html
-    if (book.usersReading.id(req.user._id)) return res.redirect('/books');
+    if (tvshow.usersWatching.id(req.user._id)) return res.redirect('/tvshows');
     tvshow.usersWatching.push(req.user._id);
     tvshow.save(function(err) {
       res.redirect(`/tvshows/${tvshow._id}`);
     });
   });
 }
+

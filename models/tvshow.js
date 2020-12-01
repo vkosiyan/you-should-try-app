@@ -12,14 +12,17 @@ const commentSchema = new Schema({
   });
 
 const tvshowSchema = new Schema({
-    title: {type: String, required: true, unique: true},
     user: { type: Schema.Types.ObjectId, ref: 'User'},
+    title: String,
     releaseYear: Number,
     mpaaRating: String,
     tvshowlink: String,
     genre: String,
     whereToWatch: String,
-    comments: [commentSchema]
+    imageLink: String,
+    comments: [commentSchema],
+    tvshowrec: {type: Schema.Types.ObjectId, ref: 'TvshowRec'},
+    usersWatching: []
     });
 
 module.exports = mongoose.model('Tvshow', tvshowSchema);

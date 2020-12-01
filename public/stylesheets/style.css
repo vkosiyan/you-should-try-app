@@ -1,22 +1,22 @@
 * {
   box-sizing: border-box;
   font-family: Helvetica;
-  color: #424748;
+  color:#11043D;
 }
 
 body {
   margin: 0;
   height: 100vh;
   display: grid;
-  grid-template-rows: 50px 1fr;
+  grid-template-rows: 60px 1fr;
   grid-template-areas: 
     "nav"
     "main"
 }
 
 body > nav {
+  border-bottom: 5px solid #11043D;
   grid-area: nav;
-  background-color: lightblue;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -42,19 +42,21 @@ body > main {
 }
 
 body > main h1:first-child {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
+  border-bottom: 5px solid #11043D;
 }
 
 nav > a {
   margin: 20px;
   text-decoration: none;
-  padding: 10px;
+  padding: 70px;
   border-radius: 5px;
 }
 
 nav > a:hover {
   color: white;
-  background-color: #424748;
+  background-color:#11043D;
+  cursor: pointer;
 }
 
 nav > a.active {
@@ -94,10 +96,33 @@ table td {
   padding: 10px;
   text-align: center;
 }
-
-#list td:nth-child(2), #list td:nth-child(3){
-  min-width: 100px;
+table.show td {
+  padding: 10px 10px 10px 10px ;
+  text-align: left;
+  background-color: white;
+  border: 2px solid #11043D
 }
+
+table.profile {
+  border: 1px solid #1C6EA4;
+  background-color: #EEEEEE;
+  width: 500px;
+  text-align: left;
+  border-collapse: collapse;
+}
+table.profile td, table.profile th {
+  border: 1px solid #AAAAAA;
+  padding: 3px 2px 5px 5px;
+}
+table.profile tbody td {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: left
+}
+table.profile td:nth-child(odd) {
+  background: #D0E4F5;
+}
+
 
 #list a {
   border-radius: 4px;
@@ -109,6 +134,7 @@ table td {
 
 #list a:hover {
   background-color: white;
+  cursor: pointer;
 }
 
 #show-page {
@@ -117,8 +143,16 @@ table td {
   grid-gap: 1rem;
 }
 
+
 #show-page div:nth-child(even) {
   font-weight: bold;
+}
+
+img.showimage {
+  float: left;
+  width: 250px;
+  height: auto;
+  margin: auto;
 }
 
 #add-review-form,
@@ -155,31 +189,66 @@ li {
   font-weight: bold;
 }
 
-
 /* Dropdown Button */
-.dropbtn {
-  background-color: lightblue;
-  color: #424748;
+.dropbtn-tv {
   text-decoration: none;
-  padding: 10px;
+  padding: 20px 70px 20px 70px;
   border-radius: 5px;
-  margin: 20px;
   border-width: 0;
+  background-color: white;
+}
+.dropbtn-profile {
+  text-decoration: none;
+  padding: 20px 70px 20px 70px;
+  border-radius: 5px;
+  border-width: 0;
+  background-color: white;
 }
 
-.dropbtn:hover {
+.dropbtn-lists {
+  text-decoration: none;
+  padding: 20px 70px 20px 70px;
+  border-radius: 5px;
+  border-width: 0;
+  background-color: white;
+}
+
+.dropbtn-tv:hover {
   color: white;
-  background-color: #424748;
+  background-color:#11043D;
+  cursor: pointer;
+}
+
+.dropbtn-profile:hover {
+  color: white;
+  background-color:#11043D;
+  cursor: pointer;
+}
+
+.dropbtn-lists:hover {
+  color: white;
+  background-color:#11043D;
+  cursor: pointer;
 }
 
 /* The container <div> - needed to position the dropdown content */
-.dropdown {
+.dropdown-tv {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-profile {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-lists {
   position: relative;
   display: inline-block;
 }
 
 /* Dropdown Content (Hidden by Default) */
-.dropdown-content {
+.dropdown-content-tv {
   display: none;
   position: absolute;
   background-color: #f1f1f1;
@@ -189,8 +258,29 @@ li {
   font-size: 15px;
 }
 
+.dropdown-content-profile {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  font-size: 15px;
+}
+
+.dropdown-content-lists {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  font-size: 15px;
+}
+
+
 /* Links inside the dropdown */
-.dropdown-content a {
+.dropdown-content-tv a {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
@@ -199,19 +289,95 @@ li {
   border-width: 1px;
 }
 
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-  color: white;
-  background-color: #424748;
+.dropdown-content-profile a {
+  color: black;
+  padding: 12px 60px 16px 60px;
+  text-decoration: none;
+  display: block;
+  border-style: solid;
+  border-width: 1px;
 }
+
+.dropdown-content-lists a {
+  color: black;
+  padding: 12px 60px 16px 60px;
+  text-decoration: none;
+  display: block;
+  border-style: solid;
+  border-width: 1px;
+}
+
+
+/* Change color of dropdown links on hover */
+.dropdown-content-tv a:hover {
+  color: white;
+  background-color:#11043D;
+  cursor: pointer;
+}
+
+.dropdown-content-profile a:hover {
+  color: white;
+  background-color:#11043D;
+  cursor: pointer;
+}
+
+.dropdown-content-lists a:hover {
+  color: white;
+  background-color:#11043D;
+  cursor: pointer;
+}
+
 
 /* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
+.dropdown-tv:hover .dropdown-content-tv {
   display: block;
+  cursor: pointer;
 }
 
+
+.dropdown-profile:hover .dropdown-content-profile {
+  display: block;
+  cursor: pointer;
+}
+
+
+.dropdown-lists:hover .dropdown-content-lists {
+  display: block;
+  cursor: pointer;
+}
+
+
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {
+.dropdown-tv:hover .dropbtn-tv {
   color: white;
-  background-color: #424748;
+  background-color:#11043D;
+  cursor: pointer;
+}
+
+.dropdown-profile:hover .dropbtn-profile {
+  color: white;
+  background-color:#11043D;
+  cursor: pointer;
+}
+
+.dropdown-lists:hover .dropbtn-lists {
+  color: white;
+  background-color:#11043D;
+  cursor: pointer;
+}
+
+button.form {
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px;
+  background-color:#11043D;
+  color: white;
+  }
+
+.form:hover {
+  color: #11043D;
+  background-color: white;
+  cursor: pointer;
+  font-weight: bold;
 }
