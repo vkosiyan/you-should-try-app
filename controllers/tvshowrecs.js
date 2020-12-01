@@ -6,6 +6,9 @@ module.exports = {
     create,
     show,
     index,
+    edit,
+    update,
+    delete: deleteTvShowRec
   };
 
 function newTvshowRec(req, res){
@@ -24,7 +27,6 @@ function create(req, res){
 
 function show(req, res) {
     TvshowRec.findById(req.params.id).populate('tvshows').exec(function(err, tvshowrec){
-        console.log('THIS IS THE FLIGHT ', tvshowrec)
         Tvshow.find(
             {_id: {$nin: tvshowrec.tvshows}},
             function(err, tvshows) {
@@ -34,8 +36,36 @@ function show(req, res) {
         )
 }
 
+function deleteTvShowRec(req, res) {
+  TvshowRec.findById(req.params.id, function(err, tvshowrec) {
+  if (!tvshowrec.user.equals(req.user._id)) return res.redirect(`/tvshowrecs/${tvshowrec._id}`);
+  tvshowrec.remove();
+  tvshowrec.save(function(err){
+    res.redirect('tvshowsrecs');
+    })
+  })
+}
+
 function index(req,res){
   TvshowRec.find({}, function(err, tvshowrecs) {
       res.render('tvshowrecs/index', { title: 'TV Recommendation Lists', tvshowrecs });
   });
+}
+
+function edit(req, res) {
+  TvshowRec.findById(req.params.id, function(err, tvshowrec) {
+    // Verify book is "owned" by logged in user
+    if (!tvshowrec.user.equals(req.user._id)) return res.redirect(`/tvshowrecs/${tvshowrec._id}`);
+    res.render(`tvshowrecs/edit`, { title: 'Edit List Details', tvshowrec});
+  });
+}
+
+function update(req, res) {
+  TvshowRec.findById(req.params.id, function(err, tvshowrec) {
+    tvshowrec.title = req.body.title;
+    tvshowrec.listDesc = req.body.listDesc;
+    tvshowrec.save(function(err) {
+      res.redirect(`/tvshowrecs/${tvshowrec._id}`);
+    });
+  });  
 }

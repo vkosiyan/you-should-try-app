@@ -1,0 +1,14 @@
+
+<%- include('../partials/header') %>
+
+<form id="new-form" action="/tvshowrecs/<%= tvshowrec.id %>?_method=PUT" method="POST" autocomplete="off">
+  <label>List Title:</label>
+  <input type="text" name="title" value="<%= tvshowrec.title %>">
+  <label>List Description:</label>
+  <input type="text" name="listDesc" value="<%= tvshowrec.listDesc %>">
+  <label>Image Link:</label>
+  <input type="text" name="imageLink" value="<%= tvshowrec.imageLink %>">
+  <input type="submit" value="Edit List">
+</form>
+
+<%- include('../partials/footer') %>

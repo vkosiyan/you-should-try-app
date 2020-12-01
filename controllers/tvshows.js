@@ -46,13 +46,16 @@ function newTvshow(req, res) {
 
 function show(req, res) {
   Tvshow.findById(req.params.id, function(err, tvshow) {
-    res.render('tvshows/show', { title: `${tvshow.title}`, tvshow });
+    TvshowRec.find({}, function(err, tvshowrecs){
+      console.log(tvshow);
+      res.render('tvshows/show', { title: `${tvshow.title}`, tvshow, tvshowrecs });
+    })   
   });
 }
 
 function index(req, res) {
   Tvshow.find({}, function(err, tvshows) {
-    res.render('tvshows/index', { title: 'All Tv Shows', tvshows });
+    res.render('tvshows/index', { title: 'All TV Shows', tvshows });
   });
 }
 

@@ -22,14 +22,13 @@
              <div class="dropdown-tv">
               <button class="dropbtn-tv">TV SHOWS</button>
             <div class="dropdown-content-tv">
-              <a href="/tvshowrecs" <%- title === 'Recommendation Lists' ? 'class="active"' : '' %>>RECOMMENDATION LISTS</a>
               <a href="/tvshows" <%- title === 'All Movies' ? 'class="active"' : '' %>>ALL TV SHOWS</a>
               <a href="/tvshows/new" <%- title === 'Add Movie' ? 'class="active"' : '' %>>ADD TV SHOW</a>  
             </div>
             <div class="dropdown-lists">
               <button class="dropbtn-lists">LISTS</button>
             <div class="dropdown-content-lists">
-              <a href="/tvshowrecs" <%- title === 'Recommendation Lists' ? 'class="active"' : '' %>>ALL LISTS</a>
+              <a href="/tvshowrecs" <%- title === 'Recommendation Lists' ? 'class="active"' : '' %>>RECOMMENDATION LISTS</a>
               <a href="/tvshowrecs/new" <%- title === 'Recommendation Lists' ? 'class="active"' : '' %>>CREATE NEW LIST</a> 
             </div>       
             
@@ -37,7 +36,6 @@
               <button class="dropbtn-profile"><%= user.name %></a></button>
               <div class="dropdown-content-profile">
                 <a href="/user">MY PROFILE</a>
-                <a href="#">MY LISTS</a>
                 <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
               </div>
           <% } else { %>

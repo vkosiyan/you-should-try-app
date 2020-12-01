@@ -2,13 +2,25 @@
 <%- include('../partials/header') %>
 
 <section id="tvshow-page">
-  <div><h2>Title: <%= tvshowrec.title %></h2> </div>
-  <div><h3>Description: <%= tvshowrec.listDesc %></h3></div>
-  <div><a href="/tvshowrecs/<%= tvshowrec._id %>/edit">
-    <button type="submit" class="form">EDIT LIST DETAILS</button></a></div>
+  <div><h3 class="desc-heading">Description: <%= tvshowrec.listDesc %></h3></div>
+  <div>
+    <table><tr><td>
+      <% if (user) { %>
+    <a href="/tvshowrecs/<%= tvshowrec._id %>/edit">
+    <button type="submit" class="form">EDIT LIST DETAILS</button></a>
+    </td><td>      
+    <form action="/tvshowrecs/<%= tvshowrec.id %>?_method=DELETE" method="POST">
+      <button type="submit" class="form">DELETE SHOW LIST</button>
+  </form>
+  <% } else { %>
+
+    <% } %>
+</td></tr></table>
+</div>
+    
   <ol>
     <%- tvshowrec.tvshows.map(t => 
-    `<table><th colspan="2"><li>${t.title}</li></th>
+    `<table><th colspan="3" class="showrec"></th><li>${t.title}</li></th>
       <tr>
       <td><img src="${t.imageLink}" width="200"></td>
       <td><td><b>Release Year:</b> ${t.releaseYear}

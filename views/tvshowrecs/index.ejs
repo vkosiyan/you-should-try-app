@@ -2,10 +2,10 @@
 <%- include('../partials/header') %>
 <table>
   <thead>
-    <tr>
-      <th>Title</th>
-      <th>Decription</th>
-      <th>User</th>
+    <tr class="showheader">
+      <th colspan="2">Title</th>
+      <th>List Decription</th>
+      <th>Details</th>
     </tr>
   </thead>
   <tbody>
@@ -13,7 +13,8 @@
        
     <!-- Write the line of EJS to iterate over shows using forEach -->
       <tr>
-        <td><%= s.title %></td>
+        <td><b><img src="<%= s.imageLink %>" width="150px"></b></td>
+        <td><b><%= s.title %></b></td>
         <td><%= s.listDesc %></td>
         <td><a href="/tvshowrecs/<%= s._id %>">DETAILS</a></td>
       </tr>
@@ -22,7 +23,14 @@
   </tbody>
 </table>
 <br>
-<a href='/tvshowrecs/new'>Create a List</a>
+<% if (user) { %>
+    
+  <a href='/tvshowrecs/new'>Create a List</a>
+
+<% } else { %>
+
+<% } %>
+
 
 <%- include('../partials/footer') %>
 

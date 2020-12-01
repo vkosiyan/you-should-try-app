@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
   request(`${rootURL}/3/genre/tvshow/list?api_key=${key}&language=en-US`, 
   function(err, response, body){
     console.log(body)
-    res.render('index', {title: 'Popular Shows', tvshowData: body})
+    res.render('index', {title: ' ', tvshowData: body})
   })
 
 

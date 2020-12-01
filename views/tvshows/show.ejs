@@ -13,6 +13,7 @@
         <b>Genre:</b> <%= tvshow.genre %>
         <br><br>
         <b>Where You Can Stream:</b> <%= tvshow.whereToWatch %>
+        <br><br>
     </tr>
  </table>
 
@@ -26,10 +27,10 @@
  
   </td><td>
     <a href="/tvshows/<%= tvshow._id %>/edit">
-    <button type="submit" class="form">EDIT MOVIE DETAILS</button></a>
+    <button type="submit" class="form">EDIT SHOW DETAILS</button></a>
   </td><td>
     <form action="/tvshows/<%= tvshow.id %>?_method=DELETE" method="POST">
-        <button type="submit" class="form">DELETE MOVIE</button>
+        <button type="submit" class="form">DELETE SHOW</button>
     </form>
   </td>
 </tr>
@@ -40,7 +41,7 @@
 <Br><Br>
 
 
-<% if (user) { %>
+  <% if (user) { %>
     
   <table class="show">
 
@@ -81,22 +82,32 @@
           <td style="width: 400px;"><b>Would You Recommend? </b><%= comment.wouldRecommend %>
             <br><br>
             <b>Comment:</b> <%= comment.content %> </td>
-            <td style="width: 16px;"><% if (comment.userId.equals(user._id)) { %>
+            <td style="width: 16px;">
+              <% if (user) { %>
+              <% if (comment.userId.equals(user._id)) { %>
               <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
                 <button type="submit" class="form">X</button>
-              </form><% } %></td>
+              </form>
+              <% } %>
+              <% } else { %>
+
+                <% } %></td>
            </tr>
           <tr>
           <td style="width: 31px;">
           </td>
           <td style="width: 34px;">
+            <% if (user) { %>
+            
             <form action="/comments/<%= comment._id %>?_method=PUT" method="POST">
             <!-- Value attribute is being set to the comment's current text -->
-            <input name="text" value="<%= comment.wouldRecommend %>">
-            <input name="text" value="<%= comment.content %>">
+            <input type="text" name="wouldRecommend" value="<%= comment.wouldRecommend %>">
+            <input type="text" name="content" value="<%= comment.content %>">
             <button type="submit" class="form">UPDATE COMMENT</button>
           </form>
-          </form>
+          <% } else { %>
+
+            <% } %>
           <% }) %>
           </td>      
           </tr>          
@@ -110,4 +121,3 @@
 
 
 <%- include('../partials/footer') %>
-

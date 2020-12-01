@@ -7,7 +7,7 @@ const tvshowListSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: 'User'},
     title: String,
     listDesc: String,
-    user: String,
+    imageLink: String,
     tvshows: [{type: Schema.Types.ObjectId, ref: 'Tvshow'}]
     });
 
