@@ -49,11 +49,11 @@ You can create a recommendation list for any category. You add a title and a des
 
 * [Trello Board - Project Planning](https://trello.com/b/flfEQG2v/sei-project-2)
     * This Trello Board was used to do all project planning and includes:
-    * ERD
-    * Project To Do List
-    * Original wireframes for the project
-    * Bugs to fix
-    * Ice Box 
+        * ERD
+        * Project To Do List
+        * Original wireframes for the project
+        * Bugs to fix
+     * Ice Box 
 
 # Next Steps
 
