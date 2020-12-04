@@ -44,6 +44,7 @@ function newTvshow(req, res) {
 function show(req, res) {
   Tvshow.findById(req.params.id, function(err, tvshow) {
     TvshowRec.find({}, function(err, tvshowrecs){
+      console.log('TVSHOW', tvshow);
       res.render('tvshows/show', { title: `${tvshow.title}`, tvshow, tvshowrecs });
     })   
   });
