@@ -26,6 +26,7 @@ function create(req, res) {
   const tvshow = new Tvshow(req.body);
   // Assigns the logged in user's id
   tvshow.user = req.user._id;
+  tvshow.username = req.user.name;
   tvshow.save(function(err) {
     if (err) return render('tvshows/new');
     res.redirect(`/tvshows/${tvshow._id}`);
@@ -44,8 +45,8 @@ function newTvshow(req, res) {
 function show(req, res) {
   Tvshow.findById(req.params.id, function(err, tvshow) {
     TvshowRec.find({}, function(err, tvshowrecs){
-      console.log('TVSHOW', tvshow);
-      res.render('tvshows/show', { title: `${tvshow.title}`, tvshow, tvshowrecs });
+      currentUser = req.user.id;
+      res.render('tvshows/show', { title: `${tvshow.title}`, tvshow, tvshowrecs, currentUser });
     })   
   });
 }

@@ -22,7 +22,8 @@ const tvshowSchema = new Schema({
     imageLink: String,
     comments: [commentSchema],
     tvshowrec: {type: Schema.Types.ObjectId, ref: 'TvshowRec'},
-    usersWatching: []
+    usersWatching: [],
+    username: String
     });
 
 module.exports = mongoose.model('Tvshow', tvshowSchema);

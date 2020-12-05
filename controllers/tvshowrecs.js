@@ -26,6 +26,7 @@ function create(req, res){
 
 function show(req, res) {
     TvshowRec.findById(req.params.id).populate('tvshows').exec(function(err, tvshowrec){
+      console.log('REC', tvshowrec);
         Tvshow.find(
             {_id: {$nin: tvshowrec.tvshows}},
             function(err, tvshows) {

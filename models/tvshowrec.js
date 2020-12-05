@@ -8,7 +8,8 @@ const tvshowListSchema = new Schema({
     title: String,
     listDesc: String,
     imageLink: String,
-    tvshows: [{type: Schema.Types.ObjectId, ref: 'Tvshow'}]
+    tvshows: [{type: Schema.Types.ObjectId, ref: 'Tvshow'}],
+    username: String
     });
 
 module.exports = mongoose.model('TvshowRec', tvshowListSchema);

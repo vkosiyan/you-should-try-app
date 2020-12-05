@@ -3,7 +3,9 @@
 
 <section id="tvshow-page">
   <div><h3 class="desc-heading">Description: <%= tvshowrec.listDesc %></h3></div>
+  <h3 class="desc-heading">List created by: <%= tvshowrec.username %></h3>
   <div>
+    
     <table><tr><td>
       <% if (user) { %>
     <a href="/tvshowrecs/<%= tvshowrec._id %>/edit">
@@ -11,11 +13,13 @@
     </td><td>      
     <form action="/tvshowrecs/<%= tvshowrec.id %>?_method=DELETE" method="POST">
       <button type="submit" class="form">DELETE SHOW LIST</button>
-  </form>
+  </form></td>    <td>
+    <p style="font-size:10px; color: grey;"> Only the creator<br>of this movie page <br>can edit or delete.</p>
+  </td></tr></table>
   <% } else { %>
 
     <% } %>
-</td></tr></table>
+
 </div>
     
   <ol>
