@@ -43,7 +43,7 @@ You can create a recommendation list for any category. You add a title and a des
 
 # Getting Started
 
-* [Click to play launch the app](https://you-should-try.herokuapp.com/)
+* [Click to launch the app](https://you-should-try.herokuapp.com/)
     * See the live application here
     * Note - If you'd like to create either a show or a list, you must sign up/be signed in
 
